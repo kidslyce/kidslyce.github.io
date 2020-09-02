@@ -1,149 +1,53 @@
-$(() => {
-
-    $('form').on('submit', (event) => {
-        event.preventDefault();
-
-        const userInput = $('input[type="text"]').val();
+//==========================
+// THE PLANETS OF A GALAXY FAR, FAR AWAY...
+//==========================
+//the planets (on the mouse click) will pull a request for the certain attributes of the planet and post it in a modal...
 
 
-        $.ajax({
-            url: 'https://www.omdbapi.com/?apikey=53aa2cd6&t=' + userInput
-        }).then(
-            (data) => { //success callback
-                $('#title').html(data.Title);
-                $('#year').html(data.Year);
-                $('#rated').html(data.Rated);
-            },
-            (error) => { //fail callback
-                console.log(error);
+
+
+const alderaan = (() => {
+
+
+        $(".alderaan").on('click', event => {
+
+                event.preventDefault()
+
+
+                $.ajax({
+                    url: 'http://swapi.dev/api/planets/2/',
+                    type: 'Get',
+                    data: {
+                        'name': Name,
+                        'climate': Climate,
+                        'terrain': Terrain,
+                        'surface_water': Surface + Water,
+                        'population': Population,
+
+                    },
+
+                }).then(
+
+                    (data) => { //success callback
+                        $('#name').text(data.Name);
+                        $('#climate').text(data.Climate);
+                        $('#terrain').text(data.Terrain);
+                        $('#surface_water').text(data.Surface + Water);
+                        $('#population').text(data.Population);
+                    },
+
+
+
+                    (error) => { //fail callback
+                        console.log(error);
+                    })
+
             }
-        )
 
+        })
 
-    })
+}
 
-
-})
-
-//========================================
-//work with this code - the rest is graveyard
-//========================================
-
-
-// let myData = []
-// let rockets = []
-
-
-// for (let i = 1; i < 34; i++) {
-//     let settings = {
-//         url: "https://cors-anywhere.herokuapp.com/https://balldontlie.io/api/v1/players?page=" + i + "&per_page=100",
-//         method: "GET",
-//         crossDomain: true,
-//         dataType: 'jsonp',
-//         "timeout": 0,
-
-//     };
-
-
-
-//     // async function asyncCall() {
-//     $.ajax(settings).done(function(response) {
-//         // let response = await asyncCall()
-
-//         console.log(response)
-//     });
-
-// }
-
-
-
-
-// let houston = response.data.filter(obj => obj.team.city == "Houston")
-// rockets.concat(houston)
-
-// console.log("here all the rockets");
-// console.log(rockets);
-
-
-//========================================
-//work with this code - the rest is graveyard
-//========================================
-
-
-// let myData = []
-// let rockets = []
-// console.log('hello world');
-// for (let i = 1; i < 34; i++) {
-//     let settings = {
-//         "url": "https://cors-anywhere.herokuapp.com/https://balldontlie.io/api/v1/players?page=" + i + "&per_page=100",
-//         "method": "GET",
-//         crossDomain: true,
-//         dataType: 'jsonp',
-//         "timeout": 0,
-//     };
-//     $.ajax(settings).done(function(response) {
-//         console.log(response)
-//         for (let j = 0; j < response.data.length; j++) {
-//             myData.push(response.data[j])
-//         }
-//     });
-// }
-
-
-
-
-// $(() => {
-//     $('form').on('submit', (event) => {
-//         event.preventDefault();
-//         const userInput = $('input[type="text"]').val()
-
-//     })
-
-// })
-
-// let rockets = []
-
-// i =
-
-//     $.ajax(settings).done(function(response) {
-
-//         console.log(response);
-//         rockets = response.data[j].filter()
-
-
-
-
-// for (let i = 0; i < 34; i++) {
-
-
-//     let settings = {
-//         "url": "https://cors-anywhere.herokuapp.com/https://balldontlie.io/api/v1/players?page=" + i + "&per_page=100",
-//         "method": "GET",
-//         "timeout": 0,
-//     };
-
-//     $.ajax(settings).done(function(response) {
-//         console.log(response);
-//         for (let j = 0; j < response.data.length; j++) {
-//             const element = array[j];
-
-
-
-//             rockets = response.data[j].filter()
-//         }
-
-//     });
-
-// }
-
-
-
-
-
-
-
-
-// });
 
 
 
@@ -151,58 +55,43 @@ $(() => {
 
 
 // $(() => {
-//     $.ajax({
-//         url: "https://balldontlie.io/api/v1/players" + userInput
-//     }).then(
-//         (data) => {
-//             $('#points').html(data.pts);
-//             $('#assists').html(data.ast);
-//             $('#rebounds').html(data.reb);
-//         },
-//         () => {
-//             console.log('bad request');
-//         }
-//     );
-// })
 
+//     // GRABBING ALL ELEMENTS
+//     // open button
+//     const $openBtn = $('#openModal');
+//     // modal
+//     const $modal = $('#modal');
+//     // close
+//     const $closeBtn = $('#close');
 
-
-// for (let j = 0; j < response.data.length; j++) {
-//     const element = array[j];
-
-
-
-//     let myData = []
-// let rockets = []
-
-
-// for (let i = 1; i < 34; i++) {
-//     let settings = {
-//         url: "https://cors-anywhere.herokuapp.com/https://balldontlie.io/api/v1/players?page=" + i + "&per_page=100",
-//         method: "GET",
-//         // crossDomain: true,
-//         // dataType: 'jsonp',
-//         // "timeout": 0,
-
-//     };
-
-
-
-//     async function asyncCall() {
-//         $.ajax(settings).done(function(response) {
-
-//         });
-
+//     // EVENT HANDLERS
+//     const openModal = () => {
+//         $modal.css('display', 'block');
+//         // $modal.show();
 //     }
-//     let response = await asyncCall()
 
-//     console.log(response)
+//     const closeModal = () => {
+//         $modal.css('display', 'none');
+//         // $modal.hide();
+//     }
 
-//      // for (let j = 0; j < response.data.length; j++) {
-//             //     myData.push(response.data[j])
+//     // EVENT LISTENERS
+//     $openBtn.on('click', openModal);
+//     $closeBtn.on('click', closeModal);
 
-//             let houston = response.data.filter(obj => obj.team.city == "Houston")
-//             rockets.concat(houston)
+//     setTimeout(openModal, 5000);
+// });
+//IN theory I would like to add an audio clip of star wars noises 
+// const audio = document.getElementById("mySoundClip");
+// audio.play();
+//
 
-//     console.log("here all the rockets");
-//     console.log(rockets);
+///Really wanted to try and use on mouse hover but realizing it may be to complicarted 
+// $(document).ready(alderaan); {
+//     $('[data-toggle="alderaan"]').popover({
+//         placement: 'top',
+//         trigger: 'hover'
+//     });
+// }
+//=======================
+//first things first create a function that when on the link click it opens a modal
