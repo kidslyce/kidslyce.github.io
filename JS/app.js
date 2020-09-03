@@ -5,9 +5,9 @@
 
 
 
-// const $openBtn = $('#openModal');
+
 const $modal = $('.modal');
-// const $closeBtn = $('#close');
+const $closeBtn = $('#close');
 
 //planet modal calls
 const $alderannBtn = $('.alderaan')
@@ -18,204 +18,151 @@ const $yavinBtn = $('.yavin')
 
 
 
-const openModal = () => {
+const openModal = (id) => {
 
-    className.css('display', 'block');
-    // show modal
-}
-
-// const closeModal = () => {
-//     $modal.css('display', 'none');
-//     // hide modal
-// }
-
-// event listeners 
-$alderannBtn.on('click', openModal($modal));
-// $closeBtn.on('click', closeModal);
-
-// setTimeout(openModal, 5000);
+        $(id).css('display', 'block');
+        // show modal
+    }
+    // event listeners 
 
 
-const alderaan = (() => {
+$alderannBtn.on('click', () => { openModal('#alderaan-modal') });
+
+$dagobahBtn.on('click', () => { openModal('#dagobah-modal') });
+
+$endorMoonBtn.on('click', () => { openModal('#endor-modal') });
+
+$tatooinenBtn.on('click', () => { openModal('#tatooine-modal') });
+
+$yavinBtn.on('click', () => { openModal('#yavin-modal') });
 
 
-    // $(".alderaan").on('click', event => {
-    //     event.preventDefault()
+
+
+
+
+
+const getPlanetData = ((id, num) => {
 
     $.ajax({
-        url: 'http://swapi.dev/api/planets/2/',
+        url: `http://swapi.dev/api/planets/${num}/`,
         type: 'Get',
         success: (data) => {
-                $('.modal').html($(`<p>${data.name}</p>`))
-                    // $('#name').text(data.name);
-                    // $('#climate').text(data.Climate);
-                    // $('#terrain').text(data.Terrain);
-                    // $('#surface_water').text(data.Surface + Water);
-                    // $('#population').text(data.Population);
-                console.log(data);
+            $(id).append($(`<p>Name: ${data.name}</p>`))
+            $(id).append($(`<p>Climate: ${data.climate}</p>`))
+            $(id).append($(`<p>Terrain: ${data.terrain}</p>`))
+            $(id).append($(`<p>Population: ${data.population}</p>`))
 
-            }
-            //         }).then(
+            // .html : SETS the inner html for the selected element
 
-        //             (data) => { //success callback
-        //                 $('#name').text(data.Name);
-        //                 $('#climate').text(data.Climate);
-        //                 $('#terrain').text(data.Terrain);
-        //                 $('#surface_water').text(data.Surface + Water);
-        //                 $('#population').text(data.Population);
-        //                 console.log(data);
-        //             },
-        //             append(data.html('.modal-content'))
+            console.log(data);
 
-        //         )
+
+
+        }
 
     })
 
 })
 
-alderaan()
+getPlanetData('#alderaan-modal', 2)
+getPlanetData('#dagobah-modal', 5)
+getPlanetData('#endor-modal', 7)
+getPlanetData('#tatooine-modal', 1)
+getPlanetData('#yavin-modal', 3)
+
+
 
 // const dagobah = (() => {
 
 
-//     $(".dagobah").on('click', event => {
-//         event.preventDefault()
+//     $.ajax({
+//         url: 'http://swapi.dev/api/planets/5/',
+//         type: 'Get',
+//         success: (data) => {
+//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
+//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
+//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
+//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
 
-//         $.ajax({
-//             url: 'http://swapi.dev/api/planets/5/',
-//             type: 'Get',
-//             data: {
-//                 'name': Name,
-//                 'climate': Climate,
-//                 'terrain': Terrain,
-//                 'surface_water': Surface + Water,
-//                 'population': Population,
-//             },
-//             success: event(result),
-//         }).then(
+//             console.log(data);
 
-//             (data) => { //success callback
-//                 $('#name').text(data.Name);
-//                 $('#climate').text(data.Climate);
-//                 $('#terrain').text(data.Terrain);
-//                 $('#surface_water').text(data.Surface + Water);
-//                 $('#population').text(data.Population);
-//                 console.log(data);
-//             },
-//             append(data.html('.modal-content'))
-
-//         )
+//         }
 
 //     })
 
 // })
 
-// const endorMooon = (() => {
+// dagobah()
 
 
-//     $(".endor-moon").on('click', event => {
-//         event.preventDefault()
 
-//         $.ajax({
-//             url: 'http://swapi.dev/api/planets/7/',
-//             type: 'Get',
-//             data: {
-//                 'name': Name,
-//                 'climate': Climate,
-//                 'terrain': Terrain,
-//                 'surface_water': Surface + Water,
-//                 'population': Population,
-//             },
-//             success: event(result),
-//         }).then(
+// const endor = (() => {
 
-//             (data) => { //success callback
-//                 $('#name').text(data.Name);
-//                 $('#climate').text(data.Climate);
-//                 $('#terrain').text(data.Terrain);
-//                 $('#surface_water').text(data.Surface + Water);
-//                 $('#population').text(data.Population);
-//                 console.log(data);
-//             },
-//             append(data.html('.modal-content'))
 
-//         )
+//     $.ajax({
+//         url: 'http://swapi.dev/api/planets/7/',
+//         type: 'Get',
+//         success: (data) => {
+//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
+//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
+//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
+//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
+
+//             console.log(data);
+
+//         }
 
 //     })
 
 // })
+
+// endor()
 
 
 // const tatooine = (() => {
 
 
-//     $(".tatooine").on('click', event => {
-//         event.preventDefault()
+//     $.ajax({
+//         url: 'http://swapi.dev/api/planets/1/',
+//         type: 'Get',
+//         success: (data) => {
+//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
+//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
+//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
+//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
 
-//         $.ajax({
-//             url: 'http://swapi.dev/api/planets/1/',
-//             type: 'Get',
-//             data: {
-//                 'name': Name,
-//                 'climate': Climate,
-//                 'terrain': Terrain,
-//                 'surface_water': Surface + Water,
-//                 'population': Population,
-//             },
-//             success: event(result),
-//         }).then(
+//             console.log(data);
 
-//             (data) => { //success callback
-//                 $('#name').text(data.Name);
-//                 $('#climate').text(data.Climate);
-//                 $('#terrain').text(data.Terrain);
-//                 $('#surface_water').text(data.Surface + Water);
-//                 $('#population').text(data.Population);
-//                 console.log(data);
-//             },
-//             append(data.html('.modal-content'))
-
-//         )
+//         }
 
 //     })
 
 // })
+
+// tatooine()
 
 // const yavin = (() => {
 
 
-//     $(".yavin").on('click', event => {
-//         event.preventDefault()
+//     $.ajax({
+//         url: 'http://swapi.dev/api/planets/3/',
+//         type: 'Get',
+//         success: (data) => {
+//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
+//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
+//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
+//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
 
-//         $.ajax({
-//             url: 'http://swapi.dev/api/planets/3/',
-//             type: 'Get',
-//             data: {
-//                 'name': Name,
-//                 'climate': Climate,
-//                 'terrain': Terrain,
-//                 'surface_water': Surface + Water,
-//                 'population': Population,
-//             },
-//             success: event(result),
-//         }).then(
+//             console.log(data);
 
-//             (data) => { //success callback
-//                 $('#name').text(data.Name);
-//                 $('#climate').text(data.Climate);
-//                 $('#terrain').text(data.Terrain);
-//                 $('#surface_water').text(data.Surface + Water);
-//                 $('#population').text(data.Population);
-//                 console.log(data);
-//             },
-//             append(data.html('.modal-content'))
-
-//         )
+//         }
 
 //     })
 
 // })
 
+// yavin()
 
 
 
