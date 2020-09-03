@@ -6,25 +6,33 @@
 
 
 
-const $modal = $('.modal');
-const $closeBtn = $('#close');
 
+
+
+//====================
 //planet modal calls
+//====================
+
 const $alderannBtn = $('.alderaan')
 const $dagobahBtn = $('.dagobah')
-const $endorMoonBtn = $('.endor-moon')
+const $endorMoonBtn = $('.endor')
 const $tatooinenBtn = $('.tatooine')
 const $yavinBtn = $('.yavin')
 
-
+//================
+// show modal -  by passing an iteration through the openModal function Im able to 
+// create even listenes that I can assign to the class of the images. 
+//================
 
 const openModal = (id) => {
 
-        $(id).css('display', 'block');
-        // show modal
-    }
-    // event listeners 
+    $(id).css('display', 'block');
 
+}
+
+//=================
+// event listeners 
+//==================
 
 $alderannBtn.on('click', () => { openModal('#alderaan-modal') });
 
@@ -39,9 +47,10 @@ $yavinBtn.on('click', () => { openModal('#yavin-modal') });
 
 
 
-
-
-
+//============================================================================
+//Using template literals Im able to create a function that I can invoke the
+//information from the API and assign it by the class of the planets
+//============================================================================
 const getPlanetData = ((id, num) => {
 
     $.ajax({
@@ -53,7 +62,7 @@ const getPlanetData = ((id, num) => {
             $(id).append($(`<p>Terrain: ${data.terrain}</p>`))
             $(id).append($(`<p>Population: ${data.population}</p>`))
 
-            // .html : SETS the inner html for the selected element
+            // .append : SETS the html for the selected element
 
             console.log(data);
 
@@ -71,156 +80,4 @@ getPlanetData('#endor-modal', 7)
 getPlanetData('#tatooine-modal', 1)
 getPlanetData('#yavin-modal', 3)
 
-
-
-// const dagobah = (() => {
-
-
-//     $.ajax({
-//         url: 'http://swapi.dev/api/planets/5/',
-//         type: 'Get',
-//         success: (data) => {
-//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
-//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
-//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
-//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
-
-//             console.log(data);
-
-//         }
-
-//     })
-
-// })
-
-// dagobah()
-
-
-
-// const endor = (() => {
-
-
-//     $.ajax({
-//         url: 'http://swapi.dev/api/planets/7/',
-//         type: 'Get',
-//         success: (data) => {
-//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
-//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
-//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
-//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
-
-//             console.log(data);
-
-//         }
-
-//     })
-
-// })
-
-// endor()
-
-
-// const tatooine = (() => {
-
-
-//     $.ajax({
-//         url: 'http://swapi.dev/api/planets/1/',
-//         type: 'Get',
-//         success: (data) => {
-//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
-//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
-//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
-//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
-
-//             console.log(data);
-
-//         }
-
-//     })
-
-// })
-
-// tatooine()
-
-// const yavin = (() => {
-
-
-//     $.ajax({
-//         url: 'http://swapi.dev/api/planets/3/',
-//         type: 'Get',
-//         success: (data) => {
-//             $('.modal').html($(`<p>${"Name: " + data.name}</p>`))
-//             $('.modal').html($(`<p>${"Climate: " + data.climate}</p>`))
-//             $('.modal').html($(`<p>${"Terrain: " + data.terrain}</p>`))
-//             $('.modal').html($(`<p>${"Population: " + data.population}</p>`))
-
-//             console.log(data);
-
-//         }
-
-//     })
-
-// })
-
-// yavin()
-
-
-
-
-
-//=======graveyard==================
-
-
-// $(() => {
-
-//     // GRABBING ALL ELEMENTS
-//     // open button
-//     const $openBtn = $('#openModal');
-//     // modal
-//     const $modal = $('#modal');
-//     // close
-//     const $closeBtn = $('#close');
-
-//     // EVENT HANDLERS
-//     const openModal = () => {
-//         $modal.css('display', 'block');
-//         // $modal.show();
-//     }
-
-//     const closeModal = () => {
-//         $modal.css('display', 'none');
-//         // $modal.hide();
-//     }
-
-//     // EVENT LISTENERS
-//     $openBtn.on('click', openModal);
-//     $closeBtn.on('click', closeModal);
-
-//     setTimeout(openModal, 5000);
-// });
-//IN theory I would like to add an audio clip of star wars noises 
-// const audio = document.getElementById("mySoundClip");
-// audio.play();
-//
-
-///Really wanted to try and use on mouse hover but realizing it may be to complicarted 
-// $(document).ready(alderaan); {
-//     $('[data-toggle="alderaan"]').popover({
-//         placement: 'top',
-//         trigger: 'hover'
-//     });
-// }
-//=======================
-//first things first create a function that when on the link click it opens a modal
-
-//
-//=======
-//audio
-//=======
-// const yoda = 'https://www.myinstants.com/instant/yoda-laugh/?utm_source=copy&utm_medium=share'
-
-// function playSound(yoda) {
-//     document.getElementById(yoda).play();
-// };
-//======
-//======
+//using the getPlanet Data function
