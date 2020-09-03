@@ -7,7 +7,11 @@
         }
         
         body {
+<<<<<<< HEAD
             background-image: url("https://github.com/kidslyce/kidslyce.github.io/blob/gh-pages/imgs/background_img.jpg?raw=true");
+=======
+            background-image: url("file:///Users/kellenchumley/Desktop/kidslyce.github.io/imgs/background_img.jpg");
+>>>>>>> da3a0716d827beffec3d20cd3f4933acace10559
         }
         
         .modal {
